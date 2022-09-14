@@ -18,7 +18,7 @@ struct AllTodoListView: View {
             TodoListScreen(todoList: todoList)
           } label: {
             HStack {
-              CircularView(color: .purple)
+              CircularView(color:  Color(uiColor: todoList.color ?? .clear))
               Text("\(todoList.title)")
             }
           }

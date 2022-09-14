@@ -32,22 +32,34 @@ struct AddTodoModal: View {
         TextField("Title", text: $title)
           .autocorrectionDisabled(true)
           .textInputAutocapitalization(.never)
-        TextField("Notes", text: $notes)
-          .autocorrectionDisabled(true)
-          .textInputAutocapitalization(.never)
-        
+      } header: {
+        Text("Title") + Text("*").bold().font(.headline)
+      }
+
+      Section {
         Picker("Priority", selection: $priority) {
           ForEach(Priority.allCases) {
             Text($0.toString())
           }
         }
         .pickerStyle(.segmented)
+      } header: {
+        Text("Priority")
+      }
+      
+      Section {
+        TextEditor(text: $notes)
+          .autocorrectionDisabled(false)
+      } header: {
+        Text("Notes")
       }
       
       Section {
         TextField("Categories", text: $categories)
           .autocorrectionDisabled(true)
           .textInputAutocapitalization(.never)
+      } header: {
+        Text("Categories")
       } footer: {
         Text("If adding multiple categories, separate them by comma. E.g. \"groceries,work,chores\".")
       }
@@ -60,6 +72,8 @@ struct AddTodoModal: View {
             Text("Deadline")
           }
         }
+      } header: {
+        Text("Deadline")
       }
       
       Section {
@@ -72,8 +86,10 @@ struct AddTodoModal: View {
             isImagePickerPresented.toggle()
           }
         }
+      } header: {
+        Text("Image")
       }
-      
+
       Section {
         Button {
           save()
@@ -81,6 +97,7 @@ struct AddTodoModal: View {
           Text("Save")
             .fontWeight(.bold)
         }
+        .buttonStyle(.borderedProminent)
         .disabled(title.isEmpty)
       }
     }

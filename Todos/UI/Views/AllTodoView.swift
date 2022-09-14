@@ -23,7 +23,7 @@ struct AllTodoView: View {
     (name: Todo.SortType.isComplete.toString(), descriptors: [SortDescriptor(\Todo.isComplete, order: .forward)]),
     (name: Todo.SortType.name.toString(), descriptors: [SortDescriptor(\Todo.title, order: .forward)])
   ]
-
+  
   init(todoList: TodoList) {
     self.todoList = todoList
     todosFetchRequest = Todo.todos(in: todoList)
@@ -44,58 +44,44 @@ struct AllTodoView: View {
   
   var body: some View {
     listOfTodos
-    .onChange(of: activeSortIndex) { _ in
-      todos.sortDescriptors = sortTypes[activeSortIndex].descriptors
-    }
-    .toolbar {
-      ToolbarItemGroup(placement: .navigationBarTrailing) {
-        Menu {
-          Picker(selection: $activeSortIndex) {
-            ForEach(0..<sortTypes.count, id: \.self) { index in
-              let sortType = sortTypes[index]
-              Text(sortType.name)
-            }
-          } label: {}
-        } label: {
-          Image(systemName: "line.3.horizontal.decrease.circle.fill")
-        }
-        
-        Button(action: { isCategoriesModalPresented.toggle() }) {
-          Text("Categories")
-        }
-        .sheet(isPresented: $isCategoriesModalPresented) {
-          CategoriesModal(categories: categories)
+      .onChange(of: activeSortIndex) { _ in
+        todos.sortDescriptors = sortTypes[activeSortIndex].descriptors
+      }
+      .toolbar {
+        ToolbarItemGroup(placement: .navigationBarTrailing) {
+          Menu {
+            Picker(selection: $activeSortIndex) {
+              ForEach(0..<sortTypes.count, id: \.self) { index in
+                let sortType = sortTypes[index]
+                Text(sortType.name)
+              }
+            } label: {}
+          } label: {
+            Image(systemName: "line.3.horizontal.decrease.circle.fill")
+          }
+          
+          Button(action: { isCategoriesModalPresented.toggle() }) {
+            Text("Categories")
+          }
+          .sheet(isPresented: $isCategoriesModalPresented) {
+            CategoriesModal(categories: categories)
+          }
         }
       }
-    }
   }
   
   var listOfTodos: some View {
     List {
       Section {
         ForEach(todos) { todo in
-          HStack {
-            Image(systemName: todo.isComplete ? "checkmark.circle" : "circle")
-              .foregroundColor(todo.isComplete ? .green : .red)
-            
-            Text("\(todo.title)")
+          NavigationLink(destination: TodoDetailScreen(todo: todo)) {
+            HStack {
+              Image(systemName: todo.isComplete ? "checkmark.circle" : "circle")
+                .foregroundColor(todo.isComplete ? .green : .red)
+              
+              Text("\(todo.title)")
+            }
           }
-        }
-        .swipeActions(edge: .trailing, allowsFullSwipe: false) {
-          Button(role: .destructive) {
-            
-          } label: {
-            Image(systemName: "trash")
-          }
-          
-          Button {
-            
-          } label: {
-            Image(systemName: "pencil")
-          }
-          .tint(.orange)
-          
-          
         }
       } header: {
         let sortType = Todo.SortType(rawValue: activeSortIndex) ?? .createdAt

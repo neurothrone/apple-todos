@@ -15,6 +15,7 @@ struct AddTodoListModal: View {
   
   // MARK: - State
   @State private var title = ""
+  @State private var selectedColor: Color = .clear
   
   var body: some View {
     Form {
@@ -22,6 +23,8 @@ struct AddTodoListModal: View {
         TextField("Title", text: $title)
           .autocorrectionDisabled(true)
           .textInputAutocapitalization(.never)
+        
+        ColorPicker("Color", selection: $selectedColor)
       }
       
       Section {
@@ -43,6 +46,7 @@ extension AddTodoListModal {
   private func save() {
     TodoList.createWith(
       title: title,
+      color: UIColor(selectedColor),
       using: viewContext
     )
     
