@@ -27,11 +27,16 @@ struct CoreDataManager {
     return result
   }()
   
-  // MARK: - Initialization
+  // MARK: - Initialisation
   
   private let container: NSPersistentContainer
   
   private init(inMemory: Bool = false) {
+    ValueTransformer.setValueTransformer(
+      UIColorTransformer(),
+      forName: NSValueTransformerName(String(describing: UIColorTransformer.self))
+    )
+    
     ValueTransformer.setValueTransformer(
       UIImageTransformer(),
       forName: NSValueTransformerName(String(describing: UIImageTransformer.self))
