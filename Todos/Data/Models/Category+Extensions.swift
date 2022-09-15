@@ -15,7 +15,7 @@ extension Category {
     let processedTitle = title.trimmingCharacters(in: .whitespaces).lowercased()
     
     let request: NSFetchRequest<Category> = fetchRequest()
-    let predicate = NSPredicate(format: "%K == %@", "titleValue", processedTitle)
+    let predicate = NSPredicate(format: "%K == %@", #keyPath(Category.titleValue), processedTitle)
     request.predicate = predicate
     
     do {
@@ -27,8 +27,7 @@ extension Category {
         let newCategory = Category(context: context)
         newCategory.title = title
         
-        CoreDataManager.save(using: context)
-        
+        newCategory.save(using: context)
         return newCategory
       }
     } catch {

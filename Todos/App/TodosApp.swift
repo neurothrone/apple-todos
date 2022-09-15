@@ -12,7 +12,7 @@ struct TodosApp: App {
   var body: some Scene {
     WindowGroup {
       HomeScreen()
-        .environment(\.managedObjectContext, CoreDataManager.shared.viewContext)
+        .environment(\.managedObjectContext, CoreDataProvider.shared.viewContext)
     }
   }
 }

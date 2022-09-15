@@ -60,7 +60,7 @@ struct AddTodoListModal_Previews: PreviewProvider {
       AddTodoListModal()
         .environment(
           \.managedObjectContext,
-           CoreDataManager.preview.viewContext
+           CoreDataProvider.preview.viewContext
         )
     }
   }

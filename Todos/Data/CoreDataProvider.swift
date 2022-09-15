@@ -1,5 +1,5 @@
 //
-//  CoreDataManager.swift
+//  CoreDataProvider.swift
 //  TodoTrackerWithCoreData
 //
 //  Created by Zaid Neurothrone on 2022-09-12.
@@ -7,13 +7,13 @@
 
 import CoreData
 
-struct CoreDataManager {
+struct CoreDataProvider {
   
   // MARK: - Static Properties
   
-  static let shared = CoreDataManager()
-  static var preview: CoreDataManager = {
-    let result = CoreDataManager(inMemory: true)
+  static let shared = CoreDataProvider()
+  static var preview: CoreDataProvider = {
+    let result = CoreDataProvider(inMemory: true)
     let viewContext = result.container.viewContext
     
     //    for i in 1...5 {
@@ -87,25 +87,20 @@ struct CoreDataManager {
   //  }
 }
 
-extension CoreDataManager {
-  static func save(using managedObjectContext: NSManagedObjectContext) {
-    guard managedObjectContext.hasChanges
+extension CoreDataProvider {
+  static func save(using context: NSManagedObjectContext) {
+    guard context.hasChanges
     else {
       return
     }
     
     do {
-      try managedObjectContext.save()
+      try context.save()
     } catch {
+      context.rollback()
       let nserror = error as NSError
       fatalError("❌ -> \(nserror), \(nserror.userInfo)")
     }
-  }
-  
-  static func deleteList(_ list: TodoList) {
-    let context = shared.viewContext
-    context.delete(list)
-    save(using: context)
   }
   
   static func delete<T: NSManagedObject>(

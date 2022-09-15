@@ -28,7 +28,7 @@ struct CategoryListModal: View {
 
 struct CategoryListModal_Previews: PreviewProvider {
   static var previews: some View {
-    let context = CoreDataManager.preview.viewContext
+    let context = CoreDataProvider.preview.viewContext
     let category = Category(context: context)
     category.title = "Groceries"
     

@@ -35,7 +35,7 @@ struct HomeScreen: View {
 struct HomeScreen_Previews: PreviewProvider {
   static var previews: some View {
     HomeScreen()
-      .environment(\.managedObjectContext, CoreDataManager.preview.viewContext)
+      .environment(\.managedObjectContext, CoreDataProvider.preview.viewContext)
     //      .previewInAllColorSchemes
   }
 }

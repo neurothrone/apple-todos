@@ -49,10 +49,11 @@ extension AllTodoListView {
 }
 
 struct AllTodoListView_Previews: PreviewProvider {
+  // TODO: in preview generate sample todo lists
   @FetchRequest(fetchRequest: TodoList.all) private static var allTodoLists
   
   static var previews: some View {
-    let context = CoreDataManager.preview.viewContext
+    let context = CoreDataProvider.preview.viewContext
     
     return AllTodoListView(todoLists: allTodoLists)
       .environment(\.managedObjectContext, context)

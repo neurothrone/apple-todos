@@ -27,7 +27,7 @@ extension TodoList {
   }
   
   @nonobjc public class func fetchRequest() -> NSFetchRequest<TodoList> {
-    return NSFetchRequest<TodoList>(entityName: "TodoList")
+    return NSFetchRequest<TodoList>(entityName: String(describing: TodoList.self))
   }
 }
 

@@ -41,7 +41,7 @@ struct TodoDetailScreen: View {
 
 struct TodoDetailScreen_Previews: PreviewProvider {
   static var previews: some View {
-    let context = CoreDataManager.preview.viewContext
+    let context = CoreDataProvider.preview.viewContext
     let todo = Todo(context: context)
     todo.title = "Test Todo"
     todo.notes = "Welcome! There is no turning back now."

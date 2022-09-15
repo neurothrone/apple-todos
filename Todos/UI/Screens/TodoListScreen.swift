@@ -33,10 +33,10 @@ struct TodoListScreen: View {
 
 struct TodoListScreen_Previews: PreviewProvider {
   static var previews: some View {
-    let context = CoreDataManager.preview.viewContext
+    let context = CoreDataProvider.preview.viewContext
     let todoList = TodoList(context: context)
     todoList.title = "Preview List"
-    CoreDataManager.save(using: context)
+    CoreDataProvider.save(using: context)
     
     return TodoListScreen(todoList: todoList)
       .environment(\.managedObjectContext, context)

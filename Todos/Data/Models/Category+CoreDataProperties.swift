@@ -6,15 +6,16 @@
 //
 //
 
-import Foundation
 import CoreData
-
 
 extension Category {
   
-  @NSManaged public var id: UUID
+  @nonobjc public class func fetchRequest() -> NSFetchRequest<Category> {
+    return NSFetchRequest<Category>(entityName: String(describing: Category.self))
+  }
   
-  @NSManaged fileprivate var titleValue: String
+  @NSManaged public var id: UUID
+  @NSManaged internal var titleValue: String
   var title: String {
     get { titleValue.capitalized }
     set { titleValue = newValue.lowercased() }
@@ -33,10 +34,6 @@ extension Category {
     super.awakeFromInsert()
     
     id = UUID()
-  }
-  
-  @nonobjc public class func fetchRequest() -> NSFetchRequest<Category> {
-    return NSFetchRequest<Category>(entityName: "Category")
   }
 }
 

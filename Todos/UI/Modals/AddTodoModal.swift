@@ -133,14 +133,13 @@ extension AddTodoModal {
 
 struct AddTodoModal_Previews: PreviewProvider {
   static var previews: some View {
-    let context = CoreDataManager.preview.viewContext
+    let context = CoreDataProvider.preview.viewContext
     let todoList = TodoList(context: context)
     todoList.title = "Preview List"
-    CoreDataManager.save(using: context)
     
     return NavigationView {
       AddTodoModal(todoList: todoList)
-        .environment(\.managedObjectContext, CoreDataManager.preview.viewContext)
+        .environment(\.managedObjectContext, CoreDataProvider.preview.viewContext)
     }
   }
 }

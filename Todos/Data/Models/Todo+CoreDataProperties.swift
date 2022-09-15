@@ -7,7 +7,6 @@
 //
 
 import CoreData
-import SwiftUI
 import UIKit
 
 // NOTE:
@@ -21,6 +20,10 @@ import UIKit
 // external storage. This is more ideal/optimal
 
 extension Todo {
+  
+  @nonobjc public class func fetchRequest() -> NSFetchRequest<Todo> {
+    return NSFetchRequest<Todo>(entityName: String(describing: Todo.self))
+  }
   
   // MARK: - Properties
   
@@ -65,89 +68,6 @@ extension Todo {
     order = 0
     createdAt = Date()
   }
-  
-  static func createWith(
-    title: String,
-    notes: String,
-    priority: Priority,
-    deadlineAt: Date?,
-    categories: Set<Category> = [],
-    image: UIImage? = nil,
-    in list: TodoList,
-    using managedObjectContext: NSManagedObjectContext
-  ) {
-    let todo = Todo(context: managedObjectContext)
-    
-    todo.title = title
-    
-    if notes.isNotEmpty {
-      todo.notes = notes
-    }
-    
-    todo.priority = priority
-    
-    if let deadlineAt = deadlineAt {
-      todo.deadlineAt = deadlineAt
-    }
-    
-    todo.categories = categories
-    
-    // Transformable Approach
-    todo.image = image
-    
-    // Binary Data Approach
-//    todo.image = image?.jpegData(compressionQuality: 1) ?? Data()
-    
-    todo.list = list
-    
-    CoreDataManager.save(using: managedObjectContext)
-  }
-  
-  // MARK: - Fetch Requests
-  @nonobjc public class func fetchRequest() -> NSFetchRequest<Todo> {
-    return NSFetchRequest<Todo>(entityName: "Todo")
-  }
-  
-  static var all: NSFetchRequest<Todo> {
-    let request = Todo.fetchRequest()
-    request.sortDescriptors = [NSSortDescriptor(keyPath: \Todo.createdAt, ascending: false)]
-//    request.sortDescriptors = [NSSortDescriptor(key: "createdAt", ascending: false)]
-    return request
-  }
-  
-  static func todos(in list: TodoList) -> FetchRequest<Todo> {
-    let titleSortDescriptor = NSSortDescriptor(key: "title", ascending: true)
-    let createdAtSortDescriptor = NSSortDescriptor(key: "createdAt", ascending: false)
-    let listPredicate = NSPredicate(format: "%K == %@", "list.title", list.title)
-//    let isCompletePredicate = NSPredicate(format: "%K == %@", "isComplete", NSNumber(value: false))
-    
-//    let combinedPredicate = NSCompoundPredicate(
-//      andPredicateWithSubpredicates: [listPredicate, isCompletePredicate])
-    
-    return FetchRequest<Todo>(
-      entity: Todo.entity(),
-      sortDescriptors: [titleSortDescriptor, createdAtSortDescriptor],
-      predicate: listPredicate
-//      predicate: combinedPredicate
-      //      animation: .easeIn
-    )
-  }
-  
-  //  static var allCompleted: NSFetchRequest<Todo> {
-  //    let request = Todo.fetchRequest()
-  //    request.sortDescriptors = [NSSortDescriptor(key: "createdAt", ascending: false)]
-  //    let isCompletePredicate = NSPredicate(format: "%K == %@", "isComplete", true as NSNumber)
-  //    request.predicate = isCompletePredicate
-  //    return request
-  //  }
-  //
-  //  static var allNotCompleted: NSFetchRequest<Todo> {
-  //    let request = Todo.fetchRequest()
-  //    request.sortDescriptors = [NSSortDescriptor(key: "createdAt", ascending: false)]
-  //    let isCompletePredicate = NSPredicate(format: "%K == %@", "isComplete", false as NSNumber)
-  //    request.predicate = isCompletePredicate
-  //    return request
-  //  }
 }
 
 extension Todo : Identifiable {}

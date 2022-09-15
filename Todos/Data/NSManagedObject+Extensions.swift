@@ -7,17 +7,17 @@
 
 import CoreData
 
-extension NSManagedObject {
+extension NSManagedObject {  
   private static var viewContext: NSManagedObjectContext {
-    CoreDataManager.shared.viewContext
+    CoreDataProvider.shared.viewContext
   }
   
   func save(using context: NSManagedObjectContext) {
-    CoreDataManager.save(using: context)
+    CoreDataProvider.save(using: context)
   }
   
   func delete(using context: NSManagedObjectContext) {
-    CoreDataManager.delete(object: self, using: context)
+    CoreDataProvider.delete(object: self, using: context)
   }
   
   static func getById<T: NSManagedObject>(id: UUID) -> T? {
