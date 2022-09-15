@@ -54,8 +54,8 @@ extension Todo {
   static func todos(in list: TodoList) -> FetchRequest<Todo> {
     let titleSortDescriptor = NSSortDescriptor(keyPath: \TodoList.title, ascending: true)
     let createdAtSortDescriptor = NSSortDescriptor(keyPath: \TodoList.createdAt, ascending: false)
-    let listPredicate = NSPredicate(format: "%K == %@", #keyPath(TodoList.title), list.title)
-    
+    let listPredicate = NSPredicate(format: "%K == %@", "list.title", list.title)
+
     //    let combinedPredicate = NSCompoundPredicate(
     //      andPredicateWithSubpredicates: [listPredicate, isCompletePredicate])
     
