@@ -11,7 +11,7 @@
 		2F7675D828D1AD6F00EED097 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F7675D728D1AD6F00EED097 /* Preview Assets.xcassets */; };
 		2F7675DF28D1ADAB00EED097 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 2F7675DE28D1ADAB00EED097 /* README.md */; };
 		2F76760128D1ADB700EED097 /* AddTodoListModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7675E228D1ADB700EED097 /* AddTodoListModal.swift */; };
-		2F76760228D1ADB700EED097 /* CategoriesModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7675E328D1ADB700EED097 /* CategoriesModal.swift */; };
+		2F76760228D1ADB700EED097 /* CategoryListModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7675E328D1ADB700EED097 /* CategoryListModal.swift */; };
 		2F76760328D1ADB700EED097 /* AddTodoModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7675E428D1ADB700EED097 /* AddTodoModal.swift */; };
 		2F76760428D1ADB700EED097 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7675E628D1ADB700EED097 /* ImagePicker.swift */; };
 		2F76760528D1ADB700EED097 /* TodoDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7675E828D1ADB700EED097 /* TodoDetailScreen.swift */; };
@@ -34,6 +34,10 @@
 		2F76761728D1ADB700EED097 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F7675FF28D1ADB700EED097 /* String+Ext.swift */; };
 		2F76761828D1ADB700EED097 /* View+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F76760028D1ADB700EED097 /* View+Ext.swift */; };
 		2F76761A28D1BA7B00EED097 /* UIColorTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F76761928D1BA7B00EED097 /* UIColorTransformer.swift */; };
+		2F76761E28D1FEC300EED097 /* TodoList+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F76761D28D1FEC300EED097 /* TodoList+Extensions.swift */; };
+		2F76762028D1FECD00EED097 /* Todo+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F76761F28D1FECD00EED097 /* Todo+Extensions.swift */; };
+		2F76762228D1FEE600EED097 /* Category+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F76762128D1FEE600EED097 /* Category+Extensions.swift */; };
+		2F76762428D1FEFC00EED097 /* NSManagedObject+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F76762328D1FEFC00EED097 /* NSManagedObject+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,7 +47,7 @@
 		2F7675D728D1AD6F00EED097 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2F7675DE28D1ADAB00EED097 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		2F7675E228D1ADB700EED097 /* AddTodoListModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTodoListModal.swift; sourceTree = "<group>"; };
-		2F7675E328D1ADB700EED097 /* CategoriesModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesModal.swift; sourceTree = "<group>"; };
+		2F7675E328D1ADB700EED097 /* CategoryListModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryListModal.swift; sourceTree = "<group>"; };
 		2F7675E428D1ADB700EED097 /* AddTodoModal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTodoModal.swift; sourceTree = "<group>"; };
 		2F7675E628D1ADB700EED097 /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		2F7675E828D1ADB700EED097 /* TodoDetailScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoDetailScreen.swift; sourceTree = "<group>"; };
@@ -66,6 +70,10 @@
 		2F7675FF28D1ADB700EED097 /* String+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		2F76760028D1ADB700EED097 /* View+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "View+Ext.swift"; sourceTree = "<group>"; };
 		2F76761928D1BA7B00EED097 /* UIColorTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorTransformer.swift; sourceTree = "<group>"; };
+		2F76761D28D1FEC300EED097 /* TodoList+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TodoList+Extensions.swift"; sourceTree = "<group>"; };
+		2F76761F28D1FECD00EED097 /* Todo+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Todo+Extensions.swift"; sourceTree = "<group>"; };
+		2F76762128D1FEE600EED097 /* Category+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Category+Extensions.swift"; sourceTree = "<group>"; };
+		2F76762328D1FEFC00EED097 /* NSManagedObject+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObject+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,7 +141,7 @@
 			children = (
 				2F7675E228D1ADB700EED097 /* AddTodoListModal.swift */,
 				2F7675E428D1ADB700EED097 /* AddTodoModal.swift */,
-				2F7675E328D1ADB700EED097 /* CategoriesModal.swift */,
+				2F7675E328D1ADB700EED097 /* CategoryListModal.swift */,
 			);
 			path = Modals;
 			sourceTree = "<group>";
@@ -181,6 +189,7 @@
 				2F76761C28D1BF3C00EED097 /* Transformers */,
 				2F76761B28D1BF2B00EED097 /* Models */,
 				2F7675F328D1ADB700EED097 /* CoreDataManager.swift */,
+				2F76762328D1FEFC00EED097 /* NSManagedObject+Extensions.swift */,
 				2F7675FB28D1ADB700EED097 /* Entities.xcdatamodeld */,
 			);
 			path = Data;
@@ -200,11 +209,14 @@
 			children = (
 				2F7675FD28D1ADB700EED097 /* TodoList+CoreDataClass.swift */,
 				2F7675F828D1ADB700EED097 /* TodoList+CoreDataProperties.swift */,
+				2F76761D28D1FEC300EED097 /* TodoList+Extensions.swift */,
 				2F7675F528D1ADB700EED097 /* Todo+CoreDataClass.swift */,
 				2F7675F628D1ADB700EED097 /* Todo+CoreDataProperties.swift */,
+				2F76761F28D1FECD00EED097 /* Todo+Extensions.swift */,
 				2F7675F728D1ADB700EED097 /* Priority.swift */,
 				2F7675F928D1ADB700EED097 /* Category+CoreDataClass.swift */,
 				2F7675F428D1ADB700EED097 /* Category+CoreDataProperties.swift */,
+				2F76762128D1FEE600EED097 /* Category+Extensions.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -300,17 +312,21 @@
 				2F76761828D1ADB700EED097 /* View+Ext.swift in Sources */,
 				2F76760328D1ADB700EED097 /* AddTodoModal.swift in Sources */,
 				2F76760828D1ADB700EED097 /* AllTodoView.swift in Sources */,
+				2F76762028D1FECD00EED097 /* Todo+Extensions.swift in Sources */,
 				2F76761028D1ADB700EED097 /* Todo+CoreDataProperties.swift in Sources */,
+				2F76762428D1FEFC00EED097 /* NSManagedObject+Extensions.swift in Sources */,
 				2F76760E28D1ADB700EED097 /* Category+CoreDataProperties.swift in Sources */,
 				2F76760728D1ADB700EED097 /* HomeScreen.swift in Sources */,
 				2F76760428D1ADB700EED097 /* ImagePicker.swift in Sources */,
 				2F76761528D1ADB700EED097 /* Entities.xcdatamodeld in Sources */,
 				2F76760A28D1ADB700EED097 /* CircularView.swift in Sources */,
+				2F76762228D1FEE600EED097 /* Category+Extensions.swift in Sources */,
 				2F76761328D1ADB700EED097 /* Category+CoreDataClass.swift in Sources */,
 				2F76760B28D1ADB700EED097 /* TodosApp.swift in Sources */,
 				2F76760F28D1ADB700EED097 /* Todo+CoreDataClass.swift in Sources */,
 				2F76760D28D1ADB700EED097 /* CoreDataManager.swift in Sources */,
-				2F76760228D1ADB700EED097 /* CategoriesModal.swift in Sources */,
+				2F76760228D1ADB700EED097 /* CategoryListModal.swift in Sources */,
+				2F76761E28D1FEC300EED097 /* TodoList+Extensions.swift in Sources */,
 				2F76761128D1ADB700EED097 /* Priority.swift in Sources */,
 				2F76761428D1ADB700EED097 /* UIImageTransformer.swift in Sources */,
 			);

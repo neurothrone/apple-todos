@@ -51,8 +51,6 @@ extension Todo {
   // File system = >= 10 mb
 //  @NSManaged public var image: Data?
   
-
-  
   // MARK: - Relationships
   @NSManaged public var list: TodoList
   @NSManaged public var categories: Set<Category>?
@@ -112,7 +110,8 @@ extension Todo {
   
   static var all: NSFetchRequest<Todo> {
     let request = Todo.fetchRequest()
-    request.sortDescriptors = [NSSortDescriptor(key: "createdAt", ascending: false)]
+    request.sortDescriptors = [NSSortDescriptor(keyPath: \Todo.createdAt, ascending: false)]
+//    request.sortDescriptors = [NSSortDescriptor(key: "createdAt", ascending: false)]
     return request
   }
   
@@ -120,15 +119,16 @@ extension Todo {
     let titleSortDescriptor = NSSortDescriptor(key: "title", ascending: true)
     let createdAtSortDescriptor = NSSortDescriptor(key: "createdAt", ascending: false)
     let listPredicate = NSPredicate(format: "%K == %@", "list.title", list.title)
-    let isCompletePredicate = NSPredicate(format: "%K == %@", "isComplete", NSNumber(value: false))
+//    let isCompletePredicate = NSPredicate(format: "%K == %@", "isComplete", NSNumber(value: false))
     
-    let combinedPredicate = NSCompoundPredicate(
-      andPredicateWithSubpredicates: [listPredicate, isCompletePredicate])
+//    let combinedPredicate = NSCompoundPredicate(
+//      andPredicateWithSubpredicates: [listPredicate, isCompletePredicate])
     
     return FetchRequest<Todo>(
       entity: Todo.entity(),
       sortDescriptors: [titleSortDescriptor, createdAtSortDescriptor],
-      predicate: combinedPredicate
+      predicate: listPredicate
+//      predicate: combinedPredicate
       //      animation: .easeIn
     )
   }
@@ -151,29 +151,3 @@ extension Todo {
 }
 
 extension Todo : Identifiable {}
-
-// MARK: - SortType
-extension Todo {
-  enum SortType: Int {
-    case createdAt, isComplete, name
-    
-    static var `default`: SortType {
-      .createdAt
-    }
-    
-    func toString() -> String {
-      switch self {
-      case .createdAt:
-        return "Created at"
-      case .isComplete:
-        return "Completed"
-      case .name:
-        return "Name"
-      }
-    }
-    
-    var title: String {
-      "Sorted by \(self.toString())"
-    }
-  }
-}

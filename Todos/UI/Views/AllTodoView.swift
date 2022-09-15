@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct AllTodoView: View {
+  @Environment(\.managedObjectContext) private var viewContext
   
   @State private var isCategoriesModalPresented = false
   @State private var activeSortIndex = Todo.SortType.default.rawValue
@@ -64,7 +65,7 @@ struct AllTodoView: View {
             Text("Categories")
           }
           .sheet(isPresented: $isCategoriesModalPresented) {
-            CategoriesModal(categories: categories)
+            CategoryListModal(categories: categories)
           }
         }
       }
@@ -77,12 +78,18 @@ struct AllTodoView: View {
           NavigationLink(destination: TodoDetailScreen(todo: todo)) {
             HStack {
               Image(systemName: todo.isComplete ? "checkmark.circle" : "circle")
+                .resizable()
+                .frame(width: 24, height: 24)
                 .foregroundColor(todo.isComplete ? .green : .red)
+                .onTapGesture {
+                  toggleIsCompleteFor(todo: todo)
+                }
               
               Text("\(todo.title)")
             }
           }
         }
+        .onDelete(perform: delete)
       } header: {
         let sortType = Todo.SortType(rawValue: activeSortIndex) ?? .createdAt
         Text(sortType.title)
@@ -91,6 +98,23 @@ struct AllTodoView: View {
           .alignToRight
       }
     }
+  }
+}
+
+extension AllTodoView {
+  private func toggleIsCompleteFor(todo: Todo) {
+    todo.isComplete.toggle()
+    todo.save(using: viewContext)
+  }
+  
+  private func delete(at offsets: IndexSet) {
+    guard let index = offsets.first
+    else {
+      print("❌ -> Failed to get first index of Todos.")
+      return
+    }
+    
+    todos[index].delete(using: viewContext)
   }
 }
 

@@ -22,7 +22,7 @@ struct AddTodoListModal: View {
       Section {
         TextField("Title", text: $title)
           .autocorrectionDisabled(true)
-          .textInputAutocapitalization(.never)
+          .textInputAutocapitalization(.sentences)
         
         ColorPicker("Color", selection: $selectedColor)
       }

@@ -1,5 +1,5 @@
 //
-//  CategoriesModal.swift
+//  CategoryListModal.swift
 //  TodoTrackerWithCoreData
 //
 //  Created by Zaid Neurothrone on 2022-09-13.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CategoriesModal: View {
+struct CategoryListModal: View {
   @Environment(\.managedObjectContext) private var viewContext
   
   let categories: [Category]
@@ -17,7 +17,7 @@ struct CategoriesModal: View {
       List {
         Section {
           ForEach(categories) { category in
-            Text("\(category.title) (\(category.todosCount))")
+            Text("\(category.title) (") + Text( "\(category.todosCount)").bold().foregroundColor(.accentColor) + Text(")")
           }
         }
       }
@@ -26,13 +26,13 @@ struct CategoriesModal: View {
   }
 }
 
-struct CategoriesModal_Previews: PreviewProvider {
+struct CategoryListModal_Previews: PreviewProvider {
   static var previews: some View {
     let context = CoreDataManager.preview.viewContext
     let category = Category(context: context)
     category.title = "Groceries"
     
-    return CategoriesModal(categories: [category])
+    return CategoryListModal(categories: [category])
       .environment(\.managedObjectContext, context)
   }
 }

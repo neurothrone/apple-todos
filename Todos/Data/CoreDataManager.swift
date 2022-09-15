@@ -32,6 +32,7 @@ struct CoreDataManager {
   private let container: NSPersistentContainer
   
   private init(inMemory: Bool = false) {
+    // Set up Value Transformers for UIColor and UIImage
     ValueTransformer.setValueTransformer(
       UIColorTransformer(),
       forName: NSValueTransformerName(String(describing: UIColorTransformer.self))
@@ -104,6 +105,14 @@ extension CoreDataManager {
   static func deleteList(_ list: TodoList) {
     let context = shared.viewContext
     context.delete(list)
+    save(using: context)
+  }
+  
+  static func delete<T: NSManagedObject>(
+    object: T,
+    using context: NSManagedObjectContext
+  ) {
+    context.delete(object)
     save(using: context)
   }
 }

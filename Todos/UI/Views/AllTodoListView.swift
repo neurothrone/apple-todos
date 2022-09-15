@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct AllTodoListView: View {
+  @Environment(\.managedObjectContext) private var viewContext
+  
   let todoLists: FetchedResults<TodoList>
   
   var body: some View {
@@ -38,11 +40,11 @@ extension AllTodoListView {
   private func delete(at offsets: IndexSet) {
     guard let index = offsets.first
     else {
-      print("❌ -> Failed to get first index")
+      print("❌ -> Failed to get first index of TodoLists.")
       return
     }
     
-    CoreDataManager.deleteList(todoLists[index])
+    todoLists[index].delete(using: viewContext)
   }
 }
 

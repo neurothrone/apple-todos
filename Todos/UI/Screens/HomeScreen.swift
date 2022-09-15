@@ -32,18 +32,6 @@ struct HomeScreen: View {
   }
 }
 
-extension HomeScreen {
-  private func delete(at offsets: IndexSet) {
-    guard let index = offsets.first
-    else {
-      print("❌ -> Failed to get first index")
-      return
-    }
-    
-    CoreDataManager.deleteList(todoLists[index])
-  }
-}
-
 struct HomeScreen_Previews: PreviewProvider {
   static var previews: some View {
     HomeScreen()

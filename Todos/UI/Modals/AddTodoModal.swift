@@ -31,7 +31,7 @@ struct AddTodoModal: View {
       Section {
         TextField("Title", text: $title)
           .autocorrectionDisabled(true)
-          .textInputAutocapitalization(.never)
+          .textInputAutocapitalization(.sentences)
       } header: {
         Text("Title") + Text("*").bold().font(.headline)
       }
@@ -50,6 +50,7 @@ struct AddTodoModal: View {
       Section {
         TextEditor(text: $notes)
           .autocorrectionDisabled(false)
+          .textInputAutocapitalization(.sentences)
       } header: {
         Text("Notes")
       }
@@ -57,7 +58,7 @@ struct AddTodoModal: View {
       Section {
         TextField("Categories", text: $categories)
           .autocorrectionDisabled(true)
-          .textInputAutocapitalization(.never)
+          .textInputAutocapitalization(.words)
       } header: {
         Text("Categories")
       } footer: {
